@@ -31,7 +31,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 if True:
-    ALLOWED_HOSTS = ['8000-studentofco-cifsfhellod-6npmt4dsa3d.ws-eu108.gitpod.io']
+    ALLOWED_HOSTS = ['8000-studentofcod-djangoblog-pe15e0np6k9.ws-eu108.gitpod.io']
 
 else:
     ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
