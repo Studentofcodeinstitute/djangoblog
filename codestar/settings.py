@@ -34,8 +34,8 @@ if True:
     ALLOWED_HOSTS = ['8000-studentofcod-djangoblog-pe15e0np6k9.ws-eu108.gitpod.io']
 
 else:
-    ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
-
+    ALLOWED_HOSTS = ['codestarblog1-9170e0d04af0.herokuapp.com']
+# os.environ.get('HEROKU_HOSTNAME')
 # Application definition
 
 INSTALLED_APPS = [
