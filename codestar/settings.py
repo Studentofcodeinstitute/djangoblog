@@ -31,10 +31,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 if True:
-    ALLOWED_HOSTS = ['8000-studentofcod-djangoblog-pe15e0np6k9.ws-eu108.gitpod.io']
+    ALLOWED_HOSTS = ['8000-studentofcod-djangoblog-pe15e0np6k9.ws-eu108.gitpod.io', 'codestarblog1-9170e0d04af0.herokuapp.com']
 
 else:
-    ALLOWED_HOSTS = ['codestarblog1-9170e0d04af0.herokuapp.com']
+    ALLOWED_HOSTS = os.environ.get('HEROKU_HOSTNAME')
 # os.environ.get('HEROKU_HOSTNAME')
 # Application definition
 
