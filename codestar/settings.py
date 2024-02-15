@@ -30,11 +30,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-if True:
-    ALLOWED_HOSTS = ['8000-studentofcod-djangoblog-pe15e0np6k9.ws-eu108.gitpod.io', 'codestarblog1-9170e0d04af0.herokuapp.com']
 
-else:
-    ALLOWED_HOSTS = os.environ.get('HEROKU_HOSTNAME')
+ALLOWED_HOSTS = ['8000-studentofcod-djangoblog-pe15e0np6k9.ws-eu108.gitpod.io', 'codestarblog1-9170e0d04af0.herokuapp.com']
+
+
 # os.environ.get('HEROKU_HOSTNAME')
 # Application definition
 
@@ -44,12 +43,21 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
     'django_summernote',
     'blog',
 ]
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -59,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'codestar.urls'
@@ -87,18 +96,22 @@ WSGI_APPLICATION = 'codestar.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 
-if True:
-   DATABASES = {
-    'default': {
-      'ENGINE': 'django.db.backends.sqlite3',
-      'NAME': BASE_DIR / 'db.sqlite3',
-    }
+#if True:
+   #DATABASES = {
+    #'default': {
+      #'ENGINE': 'django.db.backends.sqlite3',
+      #'NAME': BASE_DIR / 'db.sqlite3',
+    #}
+#}
+#else:
+   # DATABASE_URL = os.getenv('DATABASE_URL')
+    #DATABASES = {
+    #'default': dj_database_url.config(),
+    #}
+
+DATABASES = {
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 }
-else:
-    DATABASE_URL = os.getenv('DATABASE_URL')
-    DATABASES = {
-    'default': dj_database_url.config(),
-    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
