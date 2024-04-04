@@ -15,6 +15,7 @@ from pathlib import Path
 
 import dj_database_url
 from django.contrib.messages import constants as messages
+
 if os.path.isfile("env.py"):
     import env
 
@@ -27,7 +28,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = ('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -35,7 +36,7 @@ DEBUG = True
 #X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
-ALLOWED_HOSTS = ['8000-studentofcod-djangoblog-pe15e0np6k9.ws-eu108.gitpod.io', 'codestarblog1-9170e0d04af0.herokuapp.com']
+ALLOWED_HOSTS = ['8000-studentofcod-djangoblog-5yfpfq0j7rp.ws-eu110.gitpod.io', 'codestarblog1-9170e0d04af0.herokuapp.com']
 
 # Application definition
 
@@ -118,9 +119,21 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 #     }
 # }
 
-DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+ # DATABASES = {
+   # 'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+# }
+if True:
+   DATABASES = {
+    'default': {
+      'ENGINE': 'django.db.backends.sqlite3',
+      'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
+else:
+    DATABASE_URL = os.getenv('DATABASE_URL')
+    DATABASES = {
+    'default': dj_database_url.config(),
+    }
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.gitpod.io",
@@ -147,6 +160,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'ydefjvh4tq',
+    'API_KEY': '249384949663563',
+    'API_SECRET': 'xCBnfDT_KK-9NYS2NANJ8KttwyI'
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
