@@ -23,7 +23,7 @@ if os.path.isfile("env.py"):
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
-
+development = os.environ.get('DEVELOPMENT', True)
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -31,7 +31,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = ('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = development
 
 #X_FRAME_OPTIONS = 'SAMEORIGIN'
 
@@ -122,7 +122,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
  # DATABASES = {
    # 'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
 # }
-if True:
+if development:
    DATABASES = {
     'default': {
       'ENGINE': 'django.db.backends.sqlite3',
