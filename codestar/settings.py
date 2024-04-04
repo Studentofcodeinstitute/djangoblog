@@ -112,13 +112,18 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
+if DEBUG:
+  DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+else:
+    DATABASE_URL = os.getenv('DATABASE_URL')
+    DATABASES = {
+       'default': dj_database_url.config(),
+    }
 
  # DATABASES = {
    # 'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
@@ -131,10 +136,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
     #}
 #}
 # else:
-DATABASE_URL = os.getenv('DATABASE_URL')
-    DATABASES = {
-    'default': dj_database_url.config(),
-    }
+
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.gitpod.io",
