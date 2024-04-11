@@ -34,7 +34,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # DEBUG = False
 DEBUG = os.environ.get('DEBUG')
 
-#X_FRAME_OPTIONS = 'SAMEORIGIN'
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 ALLOWED_HOSTS = ['8000-studentofcod-djangoblog-5yfpfq0j7rp.ws-eu110.gitpod.io', 'codestarblog1-9170e0d04af0.herokuapp.com', 'murmuring-brushlands-57078-eca2124eebb4.herokuapp.com']
